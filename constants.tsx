@@ -6,28 +6,28 @@ export const SERVICES: Service[] = [
     id: 'corte-classico',
     name: 'Corte Clássico',
     price: 'R$ 60,00',
-    description: 'Corte completo com lavagem, secagem e finalização com produtos premium. Tesoura ou máquina.',
-    image: 'https://images.unsplash.com/photo-1621605815841-28d9447ad2b1?q=80&w=800&auto=format&fit=crop'
+    description: 'Corte completo com lavagem, secagem e finalização com produtos premium.',
+    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 'barba-terapia',
     name: 'Barba Terapia',
     price: 'R$ 50,00',
-    description: 'Modelagem da barba com toalha quente, esfoliação facial e hidratação com óleos essenciais.',
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=800&auto=format&fit=crop'
+    description: 'Modelagem com toalha quente e hidratação profunda.',
+    image: 'https://images.unsplash.com/photo-1621605815841-28d9447ad2b1?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 'combo-completo',
-    name: 'Combo Completo',
+    name: 'Combo Gold',
     price: 'R$ 95,00',
-    description: 'A experiência definitiva. Corte de cabelo e barba terapia completa com desconto especial.',
+    description: 'Cabelo e barba com acabamento impecável e desconto exclusivo.',
     image: 'https://images.unsplash.com/photo-1593702295094-222440960579?q=80&w=800&auto=format&fit=crop',
     popular: true
   }
 ];
 
 export const CONTACT: ContactInfo = {
-  address: 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP, 01310-100',
+  address: 'Av. Paulista, 1000 - São Paulo, SP',
   phone: '(11) 99999-9999',
   email: 'contato@barbeariagold.com.br',
   hours: {

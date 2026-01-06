@@ -10,7 +10,6 @@ const App: React.FC = () => {
   
   const brandName = "Barbearia Gold";
   const whatsappNumber = "5589999867161";
-  const logoUrl = ""; 
 
   const openBooking = (serviceName?: string) => {
     setSelectedService(serviceName);
@@ -19,74 +18,73 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-dark font-display text-white selection:bg-primary selection:text-black">
-      <Navbar onAgendar={() => openBooking()} brandName={brandName} logoUrl={logoUrl} />
+      <Navbar onAgendar={() => openBooking()} brandName={brandName} />
 
       <main className="flex flex-col">
-        {/* HERO SECTION */}
-        <section id="inicio" className="relative flex min-h-[700px] w-full items-center justify-center px-6 py-20 lg:min-h-[850px]">
+        {/* HERO */}
+        <section id="inicio" className="relative flex min-h-[750px] w-full items-center justify-center px-6 py-20">
           <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent z-10"></div>
             <div className="absolute inset-0 bg-black/40 z-10"></div>
             <div 
-              className="h-full w-full bg-cover bg-center bg-no-repeat animate-slow-zoom" 
-              style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+              className="h-full w-full bg-cover bg-center bg-no-repeat transition-transform duration-[20s] scale-105" 
+              style={{ backgroundImage: `url(${HERO_IMAGE})`, animation: 'slow-zoom 30s linear infinite alternate' }}
             ></div>
           </div>
-          <div className="relative z-20 mx-auto flex max-w-[1000px] flex-col items-center text-center gap-10">
-            <div className="flex flex-col items-center gap-6">
-              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary uppercase tracking-[0.3em] backdrop-blur-md">
-                Experiência Premium
-              </span>
-              <h1 className="text-6xl font-black leading-[0.9] tracking-tighter text-white md:text-9xl drop-shadow-2xl">
-                BARBEARIA <span className="text-primary">GOLD</span>
-              </h1>
-              <p className="max-w-xl text-lg text-gray-200 font-medium md:text-xl leading-relaxed opacity-90">
-                Onde a tradição encontra a modernidade. Reserve seu momento premium com nossos especialistas no coração de São Paulo.
-              </p>
-            </div>
+          
+          <div className="relative z-20 mx-auto flex max-w-[900px] flex-col items-center text-center gap-8">
+            <span className="rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-[10px] font-black text-primary uppercase tracking-[0.4em] backdrop-blur-md">
+              Desde 2024 • Excelência
+            </span>
+            <h1 className="text-7xl font-black leading-[0.85] tracking-tighter text-white md:text-[120px] drop-shadow-2xl">
+              ESTILO & <span className="text-primary">TRADIÇÃO</span>
+            </h1>
+            <p className="max-w-xl text-lg text-gray-300 font-medium md:text-xl opacity-90 leading-relaxed">
+              Onde a técnica clássica encontra o luxo moderno. Sua melhor versão começa aqui.
+            </p>
             <button 
               onClick={() => openBooking()}
-              className="h-16 min-w-[260px] rounded-xl bg-primary px-8 text-lg font-black text-background-dark shadow-xl hover:bg-primary-dark transition-all transform hover:scale-105 active:scale-95 uppercase tracking-widest"
+              className="mt-4 h-16 min-w-[280px] rounded-2xl bg-primary px-8 text-sm font-black text-black shadow-2xl hover:bg-white transition-all transform hover:scale-105 active:scale-95 uppercase tracking-widest"
             >
-              Agendar Agora
+              Agendar Visita
             </button>
           </div>
         </section>
 
-        {/* SERVICES SECTION */}
+        {/* SERVICES */}
         <section className="py-24 bg-background-dark px-6" id="servicos">
           <div className="mx-auto max-w-[1200px]">
             <div className="mb-20 text-center">
-              <h2 className="text-4xl font-black text-white md:text-5xl mb-6 tracking-tighter uppercase">Nossos Serviços</h2>
+              <h2 className="text-4xl font-black text-white md:text-6xl mb-4 tracking-tighter uppercase">Nossos Serviços</h2>
               <div className="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
               {SERVICES.map((service) => (
-                <div key={service.id} className="group flex flex-col overflow-hidden rounded-3xl bg-background-card border border-white/5 transition-all hover:border-primary/30 shadow-lg">
-                  <div className="aspect-[16/10] overflow-hidden bg-[#222]">
+                <div key={service.id} className="group flex flex-col overflow-hidden rounded-[40px] bg-background-card border border-white/5 hover:border-primary/20 transition-all duration-500 shadow-2xl">
+                  <div className="aspect-[12/10] overflow-hidden bg-white/5">
                     <img 
                       src={service.image} 
                       alt={service.name} 
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
+                      onError={(e) => (e.currentTarget.style.display = 'none')}
                     />
                   </div>
-                  <div className="flex flex-1 flex-col p-8">
+                  <div className="flex flex-1 flex-col p-10">
                     <div className="mb-4 flex items-start justify-between">
-                      <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors uppercase">{service.name}</h3>
-                      <span className="text-lg font-black text-primary">{service.price}</span>
+                      <h3 className="text-2xl font-black text-white uppercase tracking-tighter">{service.name}</h3>
+                      <span className="text-xl font-black text-primary">{service.price}</span>
                     </div>
-                    <p className="mb-8 text-gray-400 text-sm leading-relaxed flex-1">{service.description}</p>
+                    <p className="mb-10 text-gray-500 text-sm leading-relaxed flex-1">{service.description}</p>
                     <button 
                       onClick={() => openBooking(service.name)}
-                      className={`w-full py-4 rounded-xl font-black text-xs tracking-widest uppercase transition-all ${
+                      className={`w-full py-5 rounded-2xl font-black text-[10px] tracking-[0.2em] uppercase transition-all ${
                         service.popular 
-                        ? 'bg-primary text-background-dark hover:brightness-110' 
-                        : 'border border-primary/30 text-primary hover:bg-primary hover:text-background-dark'
+                        ? 'bg-primary text-black hover:brightness-110 shadow-lg shadow-primary/20' 
+                        : 'border border-primary/40 text-primary hover:bg-primary hover:text-black'
                       }`}
                     >
-                      {service.popular ? 'Mais Procurado' : 'Reservar'}
+                      Reservar Agora
                     </button>
                   </div>
                 </div>
@@ -95,46 +93,46 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* LOCATION SECTION */}
-        <section className="py-24 bg-[#121212]" id="localizacao">
+        {/* LOCALIZAÇÃO */}
+        <section className="py-32 bg-[#0a0a0a]" id="localizacao">
           <div className="mx-auto max-w-[1200px] px-6">
-            <div className="grid gap-16 lg:grid-cols-2 items-center">
+            <div className="grid gap-20 lg:grid-cols-2 items-center">
               <div>
-                <h2 className="text-4xl font-black text-white md:text-5xl mb-10 tracking-tighter uppercase">Localização</h2>
-                <div className="space-y-8">
-                  <div className="flex items-start gap-6">
-                    <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      <span className="material-symbols-outlined text-primary">location_on</span>
+                <h2 className="text-5xl font-black text-white md:text-7xl mb-12 tracking-tighter uppercase leading-none">Estamos no <br/><span className="text-primary">Coração</span> da Cidade</h2>
+                <div className="space-y-10">
+                  <div className="flex items-start gap-8">
+                    <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 text-primary">
+                      <span className="material-symbols-outlined text-3xl">location_on</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-bold mb-1 uppercase text-sm tracking-wider">Endereço</h4>
-                      <p className="text-gray-400 text-lg leading-relaxed">{CONTACT.address}</p>
+                      <h4 className="text-white font-bold mb-2 uppercase text-xs tracking-widest opacity-50">Local</h4>
+                      <p className="text-gray-300 text-xl font-medium leading-tight">{CONTACT.address}</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-6">
-                    <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      <span className="material-symbols-outlined text-primary">schedule</span>
+                  <div className="flex items-start gap-8">
+                    <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 text-primary">
+                      <span className="material-symbols-outlined text-3xl">schedule</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-bold mb-1 uppercase text-sm tracking-wider">Horários</h4>
-                      <p className="text-gray-400">{CONTACT.hours.week}</p>
-                      <p className="text-gray-400">{CONTACT.hours.saturday}</p>
+                      <h4 className="text-white font-bold mb-2 uppercase text-xs tracking-widest opacity-50">Horários</h4>
+                      <p className="text-gray-300 font-medium">{CONTACT.hours.week}</p>
+                      <p className="text-gray-300 font-medium">{CONTACT.hours.saturday}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="h-[450px] rounded-[32px] overflow-hidden border-4 border-white/5 relative group shadow-2xl bg-[#222]">
+              <div className="h-[550px] rounded-[50px] overflow-hidden border border-white/10 relative group shadow-3xl bg-white/5">
                 <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-[3s] group-hover:scale-110" 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] group-hover:scale-110 opacity-60" 
                   style={{ backgroundImage: `url(${MAP_IMAGE})` }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 <a 
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT.address)}`} 
                   target="_blank" rel="noreferrer"
-                  className="absolute bottom-8 left-8 right-8 bg-white text-black py-4 rounded-xl font-black text-center shadow-2xl hover:bg-primary transition-all uppercase tracking-widest text-xs"
+                  className="absolute bottom-10 left-10 right-10 bg-white text-black py-5 rounded-2xl font-black text-center shadow-2xl hover:bg-primary transition-all uppercase tracking-[0.2em] text-[10px]"
                 >
-                  Abrir no Maps
+                  Traçar Rota no Google Maps
                 </a>
               </div>
             </div>
@@ -142,19 +140,18 @@ const App: React.FC = () => {
         </section>
       </main>
 
-      <footer className="bg-black py-20 border-t border-white/5">
+      <footer className="bg-black py-24 border-t border-white/5">
         <div className="mx-auto max-w-[1200px] px-6 text-center">
-            <div className="mx-auto size-16 bg-primary text-black rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary/20">
-              <span className="material-symbols-outlined text-3xl">content_cut</span>
+            <div className="mx-auto size-20 bg-primary text-black rounded-[25px] flex items-center justify-center mb-10 shadow-2xl shadow-primary/20">
+              <span className="material-symbols-outlined text-4xl">content_cut</span>
             </div>
-            <h3 className="text-3xl font-black text-white tracking-tighter mb-4 uppercase">{brandName}</h3>
-            <p className="text-gray-500 mb-10 text-sm tracking-widest uppercase">Estilo e Tradição • Desde 2024</p>
-            <div className="flex justify-center gap-8 mb-12">
-              <a href={`https://wa.me/${whatsappNumber}`} target="_blank" className="text-primary font-bold hover:underline">WhatsApp</a>
-              <span className="text-white/10">|</span>
-              <span className="text-gray-400 font-bold">{CONTACT.phone}</span>
+            <h3 className="text-4xl font-black text-white tracking-tighter mb-4 uppercase">{brandName}</h3>
+            <p className="text-gray-600 mb-12 text-xs tracking-[0.5em] uppercase">Estilo • Tradição • Luxo</p>
+            <div className="flex justify-center gap-12 mb-16 text-sm font-black uppercase tracking-widest">
+              <a href={`https://wa.me/${whatsappNumber}`} target="_blank" className="text-primary hover:text-white transition-colors">WhatsApp</a>
+              <span className="text-gray-400">{CONTACT.phone}</span>
             </div>
-            <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">© {new Date().getFullYear()} {brandName.toUpperCase()}</p>
+            <p className="text-[10px] text-gray-800 font-bold uppercase tracking-[0.8em]">© {new Date().getFullYear()} {brandName}</p>
         </div>
       </footer>
 
@@ -167,9 +164,8 @@ const App: React.FC = () => {
       />
 
       <style>{`
-        @keyframes slow-zoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-        .animate-slow-zoom { animation: slow-zoom 20s ease-in-out infinite alternate; }
-        ::-webkit-calendar-picker-indicator { filter: invert(1); opacity: 0.5; }
+        @keyframes slow-zoom { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        ::selection { background: #eebd2b; color: #000; }
       `}</style>
     </div>
   );
