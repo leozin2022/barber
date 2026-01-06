@@ -8,10 +8,9 @@ const App: React.FC = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
   
-  // Usando diretamente os dados de constants.tsx
   const brandName = "Barbearia Gold";
-  const whatsappNumber = "5589999867161"; // Seu número padrão
-  const logoUrl = ""; // Deixe vazio para usar o ícone padrão ou cole o link aqui
+  const whatsappNumber = "5589999867161";
+  const logoUrl = ""; 
 
   const openBooking = (serviceName?: string) => {
     setSelectedService(serviceName);
@@ -42,7 +41,7 @@ const App: React.FC = () => {
                 BARBEARIA <span className="text-primary">GOLD</span>
               </h1>
               <p className="max-w-xl text-lg text-gray-200 font-medium md:text-xl leading-relaxed opacity-90">
-                Onde a tradição encontra a modernidade. Reserve seu momento premium com nossos especialistas.
+                Onde a tradição encontra a modernidade. Reserve seu momento premium com nossos especialistas no coração de São Paulo.
               </p>
             </div>
             <button 
@@ -65,12 +64,12 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {SERVICES.map((service) => (
                 <div key={service.id} className="group flex flex-col overflow-hidden rounded-3xl bg-background-card border border-white/5 transition-all hover:border-primary/30 shadow-lg">
-                  <div className="aspect-[16/10] overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-[#222]">
                     <img 
                       src={service.image} 
                       alt={service.name} 
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                      onError={(e) => (e.currentTarget.src = 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=800')}
+                      loading="lazy"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-8">
@@ -124,7 +123,7 @@ const App: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-[450px] rounded-[32px] overflow-hidden border-4 border-white/5 relative group shadow-2xl">
+              <div className="h-[450px] rounded-[32px] overflow-hidden border-4 border-white/5 relative group shadow-2xl bg-[#222]">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-[3s] group-hover:scale-110" 
                   style={{ backgroundImage: `url(${MAP_IMAGE})` }}
@@ -149,13 +148,13 @@ const App: React.FC = () => {
               <span className="material-symbols-outlined text-3xl">content_cut</span>
             </div>
             <h3 className="text-3xl font-black text-white tracking-tighter mb-4 uppercase">{brandName}</h3>
-            <p className="text-gray-500 mb-10 text-sm tracking-widest uppercase">Estilo e Tradição</p>
+            <p className="text-gray-500 mb-10 text-sm tracking-widest uppercase">Estilo e Tradição • Desde 2024</p>
             <div className="flex justify-center gap-8 mb-12">
               <a href={`https://wa.me/${whatsappNumber}`} target="_blank" className="text-primary font-bold hover:underline">WhatsApp</a>
               <span className="text-white/10">|</span>
               <span className="text-gray-400 font-bold">{CONTACT.phone}</span>
             </div>
-            <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">© {new Date().getFullYear()} {brandName}</p>
+            <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">© {new Date().getFullYear()} {brandName.toUpperCase()}</p>
         </div>
       </footer>
 
